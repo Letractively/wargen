@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<clay-model clay-version="2.0.0">
+<database-model author="" begin-script="" end-script="" id="35886ba1:12e5a11e944:-8000" name="dbModel" sql-dialect-id="jp.azzurri.clay.dialect.MySQL_5_0_Dialect" version="1.0">
+<schema-list>
+<schema id="35886ba1:12e5a11e944:-7ffd" name="DEFAULT_SCHEMA">
+<table-list>
+<table id="35886ba1:12e5a11e944:-7fff" name="tab_usuario">
+<column-list>
+<column auto-increment="true" column-size="3" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ffa" mandatory="true" name="id">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="180" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ff9" mandatory="true" name="nome">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="30" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ff8" mandatory="true" name="login">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="32" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ff7" mandatory="true" name="senha">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="1" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fe5" mandatory="true" name="status">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7ffe" name="PK_TAB_USUARIO">
+<primary-key-column name="id"/>
+</primary-key>
+</table>
+<table id="35886ba1:12e5a11e944:-7fee" name="tab_patrimonio">
+<column-list>
+<column auto-increment="true" column-size="6" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fea" mandatory="true" name="id">
+<data-type name="INT" selected-variant-pattern="INT(%n)"/>
+</column>
+<column auto-increment="false" column-size="1" decimal-digits="0" default-value="" id="4c3db835:12eaf4044ed:-7fec" mandatory="true" name="setor">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="7" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fe9" mandatory="true" name="numeracao">
+<data-type name="INT" selected-variant-pattern="INT(%n) ZEROFILL"/>
+</column>
+<column auto-increment="false" column-size="180" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fe8" mandatory="true" name="descricao">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7fed" name="PK_TAB_PATRIMONIO">
+<primary-key-column name="id"/>
+</primary-key>
+<foreign-key-list>
+<foreign-key id="4c3db835:12eaf4044ed:-7fd8" name="FK_PATRIMONIO_SETOR" on-delete="UNSPECIFIED" on-update="UNSPECIFIED" referenced-key="PK_TAB_SETOR" referenced-table="tab_setor" referenced-table-schema="DEFAULT_SCHEMA" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-column column-name="setor" referenced-key-column-name="id"/>
+</foreign-key>
+</foreign-key-list>
+</table>
+<table id="35886ba1:12e5a11e944:-7fde" name="tab_permissao_tipo">
+<column-list>
+<column auto-increment="false" column-size="1" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fda" mandatory="true" name="id">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="30" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fd9" mandatory="true" name="tipo">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7fdd" name="PK_TAB_PERMISSAO_TIPO">
+<primary-key-column name="id"/>
+</primary-key>
+</table>
+<table id="35886ba1:12e5a11e944:-7fd8" name="tab_permissao_alvo">
+<column-list>
+<column auto-increment="true" column-size="2" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fd0" mandatory="true" name="id">
+<data-type name="INT" selected-variant-pattern="INT(%n)"/>
+</column>
+<column auto-increment="false" column-size="80" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fcf" mandatory="true" name="alvo">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7fd7" name="PK_TAB_PERMISSAO_ALVO">
+<primary-key-column name="id"/>
+</primary-key>
+</table>
+<table id="35886ba1:12e5a11e944:-7fce" name="tab_permissao">
+<column-list>
+<column auto-increment="true" column-size="9" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fca" mandatory="true" name="id">
+<data-type name="INT" selected-variant-pattern="INT(%n)"/>
+</column>
+<column auto-increment="false" column-size="3" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fc9" mandatory="true" name="usuario">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="1" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fc8" mandatory="true" name="tipo">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="2" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7fc7" mandatory="true" name="alvo">
+<data-type name="INT" selected-variant-pattern="INT(%n)"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7fcd" name="PK_TAB_PERMISSAO">
+<primary-key-column name="id"/>
+</primary-key>
+<foreign-key-list>
+<foreign-key id="35886ba1:12e5a11e944:-7e63" name="FK_PERMISSAO_USUARIO" on-delete="UNSPECIFIED" on-update="UNSPECIFIED" referenced-key="PK_TAB_USUARIO" referenced-table="tab_usuario" referenced-table-schema="DEFAULT_SCHEMA" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-column column-name="usuario" referenced-key-column-name="id"/>
+</foreign-key>
+<foreign-key id="35886ba1:12e5a11e944:-7e36" name="FK_PERMISSAO_ALVO" on-delete="UNSPECIFIED" on-update="UNSPECIFIED" referenced-key="PK_TAB_PERMISSAO_ALVO" referenced-table="tab_permissao_alvo" referenced-table-schema="DEFAULT_SCHEMA" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-column column-name="alvo" referenced-key-column-name="id"/>
+</foreign-key>
+<foreign-key id="35886ba1:12e5a11e944:-7e1d" name="FK_PERMISSAO_TIPO" on-delete="UNSPECIFIED" on-update="UNSPECIFIED" referenced-key="PK_TAB_PERMISSAO_TIPO" referenced-table="tab_permissao_tipo" referenced-table-schema="DEFAULT_SCHEMA" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-column column-name="tipo" referenced-key-column-name="id"/>
+</foreign-key>
+</foreign-key-list>
+</table>
+<table id="35886ba1:12e5a11e944:-7ec5" name="tab_log">
+<column-list>
+<column auto-increment="true" column-size="9" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ec1" mandatory="true" name="id">
+<data-type name="INT" selected-variant-pattern="INT(%n)"/>
+</column>
+<column auto-increment="false" column-size="30" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ebe" mandatory="true" name="usuario_login">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="10" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ebc" mandatory="true" name="usuario_nome">
+<data-type name="CHAR" selected-variant-pattern="CHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="80" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7ebb" mandatory="true" name="alvo">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="30" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7eba" mandatory="true" name="acao">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+<column auto-increment="false" column-size="0" decimal-digits="0" default-value="" id="35886ba1:12e5a11e944:-7eaf" mandatory="true" name="data">
+<data-type name="DATETIME" selected-variant-pattern="DATETIME"/>
+</column>
+</column-list>
+<primary-key id="35886ba1:12e5a11e944:-7ec4" name="PK_TAB_LOG">
+<primary-key-column name="id"/>
+</primary-key>
+</table>
+<table id="4c3db835:12eaf4044ed:-7ff4" name="tab_setor">
+<column-list>
+<column auto-increment="true" column-size="1" decimal-digits="0" default-value="" id="4c3db835:12eaf4044ed:-7ff0" mandatory="true" name="id">
+<data-type name="SMALLINT" selected-variant-pattern="SMALLINT(%n)"/>
+</column>
+<column auto-increment="false" column-size="80" decimal-digits="0" default-value="" id="4c3db835:12eaf4044ed:-7fef" mandatory="true" name="nome">
+<data-type name="VARCHAR" selected-variant-pattern="VARCHAR(%n)"/>
+</column>
+</column-list>
+<primary-key id="4c3db835:12eaf4044ed:-7ff3" name="PK_TAB_SETOR">
+<primary-key-column name="id"/>
+</primary-key>
+</table>
+</table-list>
+</schema>
+</schema-list>
+</database-model>
+<diagram>
+<table-figure height="110" refid="35886ba1:12e5a11e944:-7fff" width="235" x="75" y="44"/>
+<table-figure height="88" refid="35886ba1:12e5a11e944:-7fee" width="267" x="461" y="467"/>
+<table-figure height="66" refid="35886ba1:12e5a11e944:-7fde" width="208" x="494" y="223"/>
+<table-figure height="58" refid="35886ba1:12e5a11e944:-7fd8" width="211" x="839" y="68"/>
+<table-figure height="83" refid="35886ba1:12e5a11e944:-7fce" width="221" x="489" y="58"/>
+<table-figure height="117" refid="35886ba1:12e5a11e944:-7ec5" width="277" x="456" y="320"/>
+<table-figure height="57" refid="4c3db835:12eaf4044ed:-7ff4" width="250" x="70" y="479"/>
+</diagram>
+</clay-model>
