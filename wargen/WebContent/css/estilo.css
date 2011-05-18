@@ -1,0 +1,162 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #90a2a2;
+}
+
+h1 {
+	color: #a8c0c0;
+}
+
+h2 {
+	color: #a8c0c0;
+}
+
+.borda_arredondada {
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+
+.cabecalho {
+	background-color: white;
+	height: 150px;
+	width: 100%;
+}
+
+.corpo {
+	min-height:400px;
+	width: 100%;
+}
+
+.conteudo {
+	background-color: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	min-height: 300px;
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.menu_conteudo {
+	float: left;
+	background: #a8c0c0;
+	margin: 5px 5px 5px 5px;
+}
+
+.menu_conteudo a{
+	color: white;
+	text-decoration: none;
+	margin: 5px 5px 5px 5px;
+	font-size: 18px;
+}
+
+.menu_principal a:HOVER{
+	color: #90a2a2;
+}
+
+.panel_conteudo {
+	background-color: white;
+	float: left;
+	width: 84%;
+}
+
+.panel_login {
+	background-color: white;
+	height: 100px;		
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -50px;	
+	position: absolute;
+	top: 50%;
+	width: 400px;
+}
+
+.menu_principal {
+	background: url("../images/css/ico-menu.gif") left no-repeat;
+	margin: 5px 5px 5px 5px;
+}
+
+.menu_principal a{
+	color: #a8c0c0;
+	text-decoration: none;
+	margin-left: 15px;
+	font-size: 24px;
+}
+
+.panel_menu_conteudo {
+	display: table-cell;
+}
+
+.panel_menu_principal {
+	background-color: white;
+	float: left;
+	margin-right: 10px;
+	width: 15%;
+}
+
+.panel_usuario {
+	background-color: white;
+	height: 30px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.titulo {
+	padding-left: 15px;
+}
+
+.titulo_conteudo {
+	background-color: white;	
+	border-bottom: solid;
+	border-bottom-color: #a8c0c0;	
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.modal
+{
+	background-color: #FFFFFF;
+	float: left;
+	height: 70%;
+	left: 15%;
+	position: absolute;
+	top: 15%;
+	visibility: hidden;
+	width: 70%;
+}
+
+.modal .btn_fechar
+{
+	cursor: pointer;
+	display: table;
+	float: right;
+}
+
+.modal_frame
+{
+	border: none;
+	height: 100%;
+	width: 100%;
+}
+
+.modal_fundo
+{
+	background-color: black;
+	float: left;
+	height: 100%;
+	left: 0px;
+	opacity: 0.65;
+	position: absolute;
+	top: 0px;
+	visibility: hidden;
+	width: 100%;
+}
