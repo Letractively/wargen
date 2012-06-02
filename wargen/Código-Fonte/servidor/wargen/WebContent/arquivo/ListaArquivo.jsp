@@ -1,4 +1,4 @@
-<%@page import="br.unic.wargen.gerador.security.Autenticacao"%>
+<%@page import="br.com.wargen.gerador.security.Autenticacao"%>
 <%
 	Autenticacao.verificarUsuarioAutenticado(request, response);
 %>
