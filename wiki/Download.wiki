@@ -9,6 +9,4 @@ Faça checkout utilizando do seguinte endereço:
 
 = Seção Downloads =
 
-Na seção de Downloads estão disponíveis os arquivos referentes ao projeto, servindo como guia e base de conhecimento, bem como o projeto em si.
-
-<a href="https://code.google.com/p/wargen/downloads/list">Downloads</a>
+Na seção de <a href="https://code.google.com/p/wargen/downloads/list">Downloads</a> estão disponíveis os arquivos referentes ao projeto, servindo como guia e base de conhecimento, bem como o projeto em si.
