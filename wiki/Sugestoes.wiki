@@ -1,0 +1,3 @@
+#summary Seção para sugestões para o projeto
+
+Esta seção está disponível para dicas/sugestões sobre o projeto.
