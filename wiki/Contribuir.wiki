@@ -2,7 +2,14 @@
 
 = Codigos-fonte =
 
-Para realizar os <i>commits</i> no repositório SVN, é preciso contatar, via e-mail, os gestores do projeto <a href="mailto:levrangeles@gmail.com?Subject=WARGEN">Levrangeles da Silva Filho</a> ou <a href="mailto:robson.siscoutto@unoeste.br?Subject=WARGEN">Robson Augusto Siscoutto</a>, informando o objetivo no corpo da mensagem. Um e-mail será enviado em resposta assim que possível.
+Para realizar os <i>commits</i> no repositório SVN, é preciso contatar via e-mail:
+
+<UL>
+   <LI>Levrangeles da Silva Filho - levrangeles@gmail.com</LI>
+   <LI>Robson Augusto Siscoutto - robson.siscoutto@unoeste.br</LI>
+</UL>
+
+...informando o objetivo no corpo da mensagem. Um e-mail será enviado em resposta assim que possível.
 
 
 = Sugestões =
