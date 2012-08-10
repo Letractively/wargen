@@ -9,8 +9,7 @@ Para realizar os <i>commits</i> no repositório SVN, é preciso contatar via e-m
    <LI>Robson Augusto Siscoutto - robson.siscoutto@unoeste.br</LI>
 </UL>
 
-...informando o objetivo no corpo da mensagem. Um e-mail será enviado em resposta assim que possível.
-
+...abordando o assunto no corpo da mensagem. Um e-mail será enviado em resposta assim que possível.
 
 = Sugestões =
 
