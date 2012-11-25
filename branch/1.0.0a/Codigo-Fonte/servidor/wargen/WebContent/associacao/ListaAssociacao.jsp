@@ -77,7 +77,7 @@
 									</td>
 									<td>
 										<form action="/wargen/Aplicativo" method="POST" target="_blank">
-											<input type="hidden" name="arquivoParametros" value="usuarios/${ associacao.usuario.login }/parametros.xml" />
+											<input type="hidden" name="arquivoParametros" value="usuarios/${ associacao.usuario.login }/${ associacao.descricao }/parametros.xml" />
 											<input type="submit" value="visualizar" />
 										</form>
 									</td>
