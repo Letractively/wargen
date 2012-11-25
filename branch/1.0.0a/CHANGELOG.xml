@@ -2,6 +2,10 @@
 <changelog>
      <release numero="1.0.0a" data="">
           <melhoramentos>
+               <item descricao="Criação do diretório '/Instalacao' para os arquivos referentes a instalação do sistema." />
+               <item descricao="Criação do diretório '/Instalacao/Banco de Dados' para os arquivos referentes a instalação do banco de dados." />
+			   <item descricao="Criação do diretório '/Instalacao/Servidor' para os arquivos referentes a instalação do modulo servidor." />
+			   <item descricao="Criação do diretório '/Instalacao/Visualizador' para os arquivos referentes a instalação do modulo visualizador." />
                <item descricao="Criação do diretório '/Documentacao/Changelog' para armazenar a descrição das alterações feitas em cada release." />
           </melhoramentos>
           <ajustes>
