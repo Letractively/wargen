@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+     <release numero="1.0.0a" data="">
+          <melhoramentos>
+               <item descricao="Criação do diretório '/Documentacao/Changelog' para armazenar a descrição das alterações feitas em cada release." />
+          </melhoramentos>
+          <ajustes>
+               <item descricao="Correção da exibição correta de um modelo virtual quando cadastrada outra associação." />
+          </ajustes>
+     </release>
      <release numero="1.0.0" data="14/08/2012">
           <melhoramentos>
                <item descricao="Elaboração e implementação do projeto WARGEN." />
