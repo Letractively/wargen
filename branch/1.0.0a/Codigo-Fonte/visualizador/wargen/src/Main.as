@@ -18,7 +18,8 @@ package
 		public function Main() 
 		{			
 			urlLoader = new URLLoader();
-			urlLoader.load(new URLRequest(root.loaderInfo.parameters.arquivoParametros));
+			//urlLoader.load(new URLRequest(root.loaderInfo.parameters.arquivoParametros));
+			urlLoader.load(new URLRequest("parametros.xml"));
 			urlLoader.addEventListener(Event.COMPLETE, onXmlParametrosCarregado);
 		}
 			
