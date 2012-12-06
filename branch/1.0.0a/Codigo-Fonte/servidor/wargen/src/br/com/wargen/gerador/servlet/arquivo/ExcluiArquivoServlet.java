@@ -19,6 +19,7 @@ public class ExcluiArquivoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			if (Autenticacao.verificarUsuarioAutenticado(request, response)) {
+				
 				UsuarioBean usuario = SessionManager.getUsuarioAutenticado(request.getSession());
 				
 				ArquivoController.excluirArquivoPorId(Integer.parseInt(request.getParameter("id")),

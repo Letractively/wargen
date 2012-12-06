@@ -39,6 +39,10 @@ public class ArquivoController {
 			conn = DBManager.getInstance().getConnection(TipoBanco.MySQL);
 			conn.setAutoCommit(false);
 			
+			if (ArquivoDAO.verificarArquivoAssociado(id, conn)) {
+				throw new Exception("Arquivo não pode ser excluído, pois está associado.");
+			}
+			
 			arquivo = ArquivoDAO.carregarArquivoPorId(id, conn);
 
 			MarcadorDAO.excluirMarcadorPorId(id, conn);

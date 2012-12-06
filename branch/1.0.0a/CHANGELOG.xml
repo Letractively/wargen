@@ -10,6 +10,7 @@
           </melhoramentos>
           <ajustes>
                <item descricao="Correção da exibição correta de um modelo virtual quando cadastrada outra associação." />
+               <item descricao="Correção da mensagem incorreta ao excluir um arquivo utilizado em outra dependencia." />
           </ajustes>
      </release>
      <release numero="1.0.0" data="14/08/2012">
