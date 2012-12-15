@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>FormUploadArquivoServlet</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.arquivo.FormUploadArquivoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormUploadArquivoServlet</servlet-name>
+    <url-pattern>/arquivo/FormUploadArquivo</url-pattern>
+  </servlet-mapping>  
+  <servlet>
+    <servlet-name>ListaArquivo</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.arquivo.ListaArquivoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaArquivo</servlet-name>
+    <url-pattern>/arquivo/ListaArquivo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ExcluiArquivo</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.arquivo.ExcluiArquivoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluiArquivo</servlet-name>
+    <url-pattern>/arquivo/ExcluiArquivo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ExcluiModelo</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.modelo.ExcluiModeloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluiModelo</servlet-name>
+    <url-pattern>/modelo/ExcluiModelo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ExcluiMarcador</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.marcador.ExcluiMarcadorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluiMarcador</servlet-name>
+    <url-pattern>/marcador/ExcluiMarcador</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ListaAssociacao</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.associacao.ListaAssociacaoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaAssociacao</servlet-name>
+    <url-pattern>/associacao/ListaAssociacao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FormAssociacao</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.associacao.FormAssociacaoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormAssociacao</servlet-name>
+    <url-pattern>/associacao/FormAssociacao</url-pattern>
+  </servlet-mapping>  
+  <servlet>
+    <servlet-name>ExcluiAssociacao</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.associacao.ExcluiAssociacaoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluiAssociacao</servlet-name>
+    <url-pattern>/associacao/ExcluiAssociacao</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>AplicativoServlet</servlet-name>
+    <servlet-class>br.com.wargen.gerador.servlet.AplicativoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AplicativoServlet</servlet-name>
+    <url-pattern>/Aplicativo</url-pattern>
+  </servlet-mapping>  
+</web-app>
