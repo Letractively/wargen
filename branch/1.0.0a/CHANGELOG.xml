@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <changelog>
-     <release numero="1.0.0a" data="">
+     <release numero="1.1.0" data="">
           <melhoramentos>
 			   <item descricao="Criação do diretório /ra/usuarios/<usuario>/associacoes/ para armazenar as associações separadamente." />
                <item descricao="Criação do diretório '/Instalacao' para os arquivos referentes a instalação do sistema." />
