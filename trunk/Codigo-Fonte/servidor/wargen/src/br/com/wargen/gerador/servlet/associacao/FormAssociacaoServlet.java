@@ -87,7 +87,7 @@ public class FormAssociacaoServlet extends HttpServlet {
 			}			
 			
 			associacao.setCaminhoArquivoParametros(
-					request.getSession().getServletContext().getRealPath("\\ra\\usuarios\\" + usuario.getLogin()));
+					request.getSession().getServletContext().getRealPath("\\ra\\usuarios\\" + usuario.getLogin() + "\\associacoes\\" + associacao.getDescricao()));
 			
 			AssociacaoController.inserirAssociacao(associacao);
 			

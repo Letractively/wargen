@@ -37,6 +37,22 @@ public class ArquivoDAO {
 		}
 	}
 	
+	public static boolean verificarArquivoAssociado(int arquivoId, Connection conn) throws Exception {
+		try {			
+			PreparedStatement stmt = conn.prepareStatement(new DBManager().getQueryFile().getProperty("verificarArquivoAssociado"));
+			stmt.setInt(1, arquivoId);
+			stmt.setInt(2, arquivoId);
+	
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1) > 0;
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	public static void excluirArquivoPorNomeExtensao(String nome, String extensao, Connection conn) throws Exception {
 		try {
 			PreparedStatement stmt = conn.prepareStatement(new DBManager().getQueryFile().getProperty("excluirPorNomeExtensao"));

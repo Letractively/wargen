@@ -21,6 +21,7 @@ package
 	import org.libspark.flartoolkit.support.pv3d.FLARCamera3D;
 	import org.papervision3d.objects.parsers.DAE;
 	import org.papervision3d.objects.parsers.KMZ;
+	import org.papervision3d.objects.parsers.Max3DS;
 	import org.papervision3d.render.LazyRenderEngine;
 	import org.papervision3d.scenes.Scene3D;
 	import org.papervision3d.view.Viewport3D;
@@ -33,8 +34,8 @@ package
 		private var marcadorCarregar:Marcador = null;
 		private var interacao:Interacao = null;
 		private var interacaoSimples:InteracaoSimplesPapervision3D = null;
-		private var alturaTela:int = 600;
-		private var larguraTela:int = 600;
+		private var alturaTela:int = 480;
+		private var larguraTela:int = 640;
 		private var larguraMarcador:int = 80;
 		private var isMarcadorDetectado:Boolean = false;
 		private var limiarizacao:int = 80;
@@ -55,12 +56,14 @@ package
 		private var rasterizadorRGB:FLARRgbRaster_BitmapData = null;
 		private var matrizTransformacao:FLARTransMatResult = null;
 		
+		
 		//papervision3D
 		private var cena3D:Scene3D = null;
 		private var viewport3D:Viewport3D = null;
 		private var renderizador:LazyRenderEngine = null;
 		private var modeloDAE:DAE = null;
 		private var modeloKMZ:KMZ = null;
+		private var modelo3DS:Max3DS = null;
 		
 		public function ProjetoSimplesPapervision3D() {
 			
@@ -123,6 +126,7 @@ package
 			configurarWebcam();
 			configurarVideo();
 			configurarPapervision3D();
+			configurarModeloVirtual();
 			configurarFLARToolKit();
 			configurarInteracoes();
 			
@@ -140,7 +144,7 @@ package
 				throw new Error('Webcam não encontrada!');
 			}
 			
-			camera.setMode(larguraTela, alturaTela, 60);
+			camera.setMode(larguraTela, alturaTela, 60, true);
 			
 		}
 		
@@ -153,26 +157,38 @@ package
 		
 		private function configurarPapervision3D():void {
 			
-			baseModelo = new FLARBaseNode();
 			cena3D = new Scene3D();
 			camera3D = new FLARCamera3D(parametrosCamera);
 			viewport3D = new Viewport3D(larguraTela, alturaTela);
 			renderizador = new LazyRenderEngine(cena3D, camera3D, viewport3D);
+		}
+		
+		private function configurarModeloVirtual():void {
+			
+			baseModelo = new FLARBaseNode();
+			baseModelo.visible = false;
 			
 			switch (modeloCarregar.tipo) {
 				case "dae":
 					modeloDAE = new DAE();
 					modeloDAE.load(modeloCarregar.arquivo.caminho)
 					modeloDAE.rotationX = 90;
-					modeloDAE.scale = (modeloDAE.scale < 5) ? 5 : modeloDAE.scale;					
+					modeloDAE.scale = (modeloDAE.scale > 5 ) ? 5 : ((modeloDAE.scale < 5) ? 5 : modeloDAE.scale);			
 					baseModelo.addChild(modeloDAE, "modelo");					
 					break;
 				case "kmz":
 					modeloKMZ = new KMZ();
 					modeloKMZ.load(modeloCarregar.arquivo.caminho)
 					modeloKMZ.rotationX = 90;
-					modeloKMZ.scale = (modeloKMZ.scale < 5) ? 5 : modeloKMZ.scale;					
+					modeloKMZ.scale = (modeloKMZ.scale > 5) ? 5 : ((modeloKMZ.scale < 5) ? 5 : modeloKMZ.scale);
 					baseModelo.addChild(modeloKMZ, "modelo");					
+					break;
+				case "3ds":
+					modelo3DS = new Max3DS();
+					modelo3DS.load(modeloCarregar.arquivo.caminho);
+					modelo3DS.rotationX = 90;
+					modelo3DS.scale = (modelo3DS.scale > 5 ) ? 5 : ((modelo3DS.scale < 5) ? 5 : modelo3DS.scale);
+					baseModelo.addChild(modelo3DS, "modelo");		
 					break;
 			}
 			
@@ -187,6 +203,7 @@ package
 								new BitmapData(larguraTela, alturaTela, false, 0),
 								PixelSnapping.AUTO,
 								true);
+								
 			capturaBitmap.width = larguraTela;
 			capturaBitmap.height = alturaTela;
 			
@@ -210,17 +227,16 @@ package
 			capturaBitmap.bitmapData.draw(video);
 			
 			isMarcadorDetectado = (detectorUnicoMarcador.detectMarkerLite(rasterizadorRGB, limiarizacao)) &&
-								  (detectorUnicoMarcador.getConfidence() >= 0.5);
+								  (detectorUnicoMarcador.getConfidence() >= 0.3);
 			
 			if (isMarcadorDetectado) {
 				baseModelo.visible = true;
 				detectorUnicoMarcador.getTransformMatrix(matrizTransformacao);
-				baseModelo.setTransformMatrix(matrizTransformacao);			
+				baseModelo.setTransformMatrix(matrizTransformacao);
 			}
 			else {
 				baseModelo.visible = false;
-				var valorLimiarizacaoAnalisada:int = analisadorLimiarizacao.analyzeRaster(rasterizadorRGB);
-				limiarizacao = (limiarizacao + valorLimiarizacaoAnalisada) / 2;
+				limiarizacao = analisadorLimiarizacao.analyzeRaster(rasterizadorRGB);
 			}
 			
 			renderizador.render();

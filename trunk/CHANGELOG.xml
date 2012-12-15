@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+     <release numero="1.1.0" data="14/12/2012">
+          <melhoramentos>
+			   <item descricao="Criação do diretório /ra/usuarios/<usuario>/associacoes/ para armazenar as associações separadamente." />
+               <item descricao="Criação do diretório '/Instalacao' para os arquivos referentes a instalação do sistema." />
+               <item descricao="Criação do diretório '/Instalacao/Banco de Dados' para os arquivos referentes a instalação do banco de dados." />
+			   <item descricao="Criação do diretório '/Instalacao/Servidor' para os arquivos referentes a instalação do modulo servidor." />
+			   <item descricao="Criação do diretório '/Instalacao/Visualizador' para os arquivos referentes a instalação do modulo visualizador." />
+               <item descricao="Criação do diretório '/Documentacao' para armazenar toda a documentação do sistema." />
+			   <item descricao="Melhoria do desempenho da execução da visualização do ambiente virtual." />
+			   <item descricao="Melhoria do desempenho da execução da visualização do ambiente virtual." />
+			   <item descricao="Suporte para modelos virtuais para 3DMax, com extensao .3ds." />
+          </melhoramentos>
+          <ajustes>
+               <item descricao="Correção da exibição correta de um modelo virtual quando cadastrada outra associação." />
+               <item descricao="Correção da mensagem incorreta ao excluir um arquivo utilizado em outra dependencia." />
+			   <item descricao="Correção do erro quando uma segunda associação era criada e sobrescrevia as anteriores." />
+          </ajustes>
+     </release>
      <release numero="1.0.0" data="14/08/2012">
           <melhoramentos>
                <item descricao="Elaboração e implementação do projeto WARGEN." />

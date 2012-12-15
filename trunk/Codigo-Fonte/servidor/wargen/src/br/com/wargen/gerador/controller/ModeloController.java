@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import br.com.wargen.gerador.bean.ModeloBean;
 import br.com.wargen.gerador.dao.ArquivoDAO;
+import br.com.wargen.gerador.dao.MarcadorDAO;
 import br.com.wargen.gerador.dao.ModeloDAO;
 import br.com.wargen.gerador.enums.TipoBanco;
 import br.com.wargen.gerador.manager.DBManager;
@@ -20,6 +21,10 @@ public class ModeloController {
 		try {			
 			conn = DBManager.getInstance().getConnection(TipoBanco.MySQL);
 			conn.setAutoCommit(false);
+			
+			if (ModeloDAO.verificarModeloAssociado(id, conn)) {
+				throw new Exception("Modelo não pode ser excluído, pois está associado.");
+			}
 			
 			modelo = ModeloDAO.carregarModeloPorId(id, conn);
 
