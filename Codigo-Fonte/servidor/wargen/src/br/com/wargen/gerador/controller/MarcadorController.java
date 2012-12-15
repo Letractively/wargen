@@ -21,6 +21,10 @@ public class MarcadorController {
 			conn = DBManager.getInstance().getConnection(TipoBanco.MySQL);
 			conn.setAutoCommit(false);
 			
+			if (MarcadorDAO.verificarMarcadorAssociado(id, conn)) {
+				throw new Exception("Arquivo não pode ser excluído, pois está associado.");
+			}
+			
 			marcador = MarcadorDAO.carregarMarcadorPorId(id, conn);
 
 			MarcadorDAO.excluirMarcadorPorId(id, conn);

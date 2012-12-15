@@ -23,7 +23,7 @@
 					<h2>Associar</h2>
 				</div>
 				
-				<div class="conteudo_modal borda_arredondada"">
+				<div class="conteudo_modal borda_arredondada">
 				
 					<div>					
 						<jsp:include page="../BarraMensagem.jsp" />

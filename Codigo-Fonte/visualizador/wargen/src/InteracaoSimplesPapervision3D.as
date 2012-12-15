@@ -43,7 +43,7 @@ package
 						baseModelo.getChildByName("modelo").x = 0;
 						baseModelo.getChildByName("modelo").y = 0;
 						baseModelo.getChildByName("modelo").z = 0;
-						baseModelo.getChildByName("modelo").scale = 5;
+						baseModelo.getChildByName("modelo").scale = 2;
 						baseModelo.getChildByName("modelo").rotationX = 90;
 						baseModelo.getChildByName("modelo").rotationY = 0;
 						baseModelo.getChildByName("modelo").rotationZ = 0;

@@ -89,5 +89,20 @@ public class MarcadorDAO {
 			throw e;
 		}
 	}
+	
+	public static boolean verificarMarcadorAssociado(int marcadorId, Connection conn) throws Exception {
+		try {			
+			PreparedStatement stmt = conn.prepareStatement(new DBManager().getQueryFile().getProperty("verificarMarcadorAssociado"));
+			stmt.setInt(1, marcadorId);
+	
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			
+			return rs.getInt(1) > 0;
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
 
 }
