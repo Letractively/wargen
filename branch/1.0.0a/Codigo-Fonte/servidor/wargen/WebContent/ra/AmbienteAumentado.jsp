@@ -23,8 +23,7 @@
 		var attributes = {
 			id:"wargen"
 		};
-		
-		swfobject.embedSWF("wargen.swf", "altContent", "100%", "100%", "10.0.0", "expressInstall.swf", flashvars, params, attributes);
+		swfobject.embedSWF("wargen.swf", "altContent", "100%", "100%", "10.1.0", "expressInstall.swf", flashvars, params, attributes);
 	}
 </script>
 <style type="text/css">

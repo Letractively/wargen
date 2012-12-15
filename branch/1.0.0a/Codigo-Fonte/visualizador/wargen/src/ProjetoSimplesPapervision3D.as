@@ -34,8 +34,8 @@ package
 		private var marcadorCarregar:Marcador = null;
 		private var interacao:Interacao = null;
 		private var interacaoSimples:InteracaoSimplesPapervision3D = null;
-		private var alturaTela:int = 500;
-		private var larguraTela:int = 500;
+		private var alturaTela:int = 480;
+		private var larguraTela:int = 640;
 		private var larguraMarcador:int = 80;
 		private var isMarcadorDetectado:Boolean = false;
 		private var limiarizacao:int = 80;
@@ -166,6 +166,7 @@ package
 		private function configurarModeloVirtual():void {
 			
 			baseModelo = new FLARBaseNode();
+			baseModelo.visible = false;
 			
 			switch (modeloCarregar.tipo) {
 				case "dae":
@@ -229,10 +230,12 @@ package
 								  (detectorUnicoMarcador.getConfidence() >= 0.3);
 			
 			if (isMarcadorDetectado) {
+				baseModelo.visible = true;
 				detectorUnicoMarcador.getTransformMatrix(matrizTransformacao);
 				baseModelo.setTransformMatrix(matrizTransformacao);
 			}
 			else {
+				baseModelo.visible = false;
 				limiarizacao = analisadorLimiarizacao.analyzeRaster(rasterizadorRGB);
 			}
 			
