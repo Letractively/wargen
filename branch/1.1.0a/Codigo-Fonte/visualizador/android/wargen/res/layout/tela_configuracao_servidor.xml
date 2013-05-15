@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ConfiguracaoServidorActivity" >
+
+    <EditText
+        android:id="@+id/txtEnderecoServidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="Endereço" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/txtUsuarioServidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtEnderecoServidor"
+        android:layout_below="@+id/txtEnderecoServidor"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Usuário" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtSenhaServidor"
+        android:layout_alignRight="@+id/txtUsuarioServidor"
+        android:layout_centerVertical="true"
+        android:text="Salvar" />
+
+    <EditText
+        android:id="@+id/txtSenhaServidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtUsuarioServidor"
+        android:layout_below="@+id/txtUsuarioServidor"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword" />
+
+</RelativeLayout>

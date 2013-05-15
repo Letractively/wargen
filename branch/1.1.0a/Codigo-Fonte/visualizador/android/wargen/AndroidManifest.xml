@@ -35,6 +35,14 @@
             android:label="@string/title_activity_principal"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="br.com.wargen.activity.ConfiguracaoServidorActivity"
+            android:label="@string/title_activity_configuracao_servidor"
+            android:parentActivityName="br.com.wargen.activity.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.wargen.activity.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>

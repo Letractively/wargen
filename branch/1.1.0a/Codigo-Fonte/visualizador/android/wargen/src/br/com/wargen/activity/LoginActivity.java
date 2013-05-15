@@ -12,11 +12,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 public class LoginActivity extends Activity {
 
+	public static String SERVER_ADDRESS = "wargen:8080";
+	public static String SERVER_USER = "wargen";
+	public static String SERVER_PASSWORD = "123123";
 	
     @SuppressWarnings("deprecation")
 	@Override
@@ -26,12 +30,25 @@ public class LoginActivity extends Activity {
         
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
+    }
+    
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_item_sair:
+                this.finish();
+                return true;
+            case R.id.menu_item_configurar_servidor:
+            	this.startActivity(new Intent(this, ConfiguracaoServidorActivity.class));
+            	return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
     
     public void fazerLogin(View view) {

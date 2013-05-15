@@ -38,7 +38,7 @@
         android:inputType="text|textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnSalvar"
         style="@dimen/activity_horizontal_margin"
         android:layout_width="279dp"
         android:layout_height="wrap_content"
