@@ -1,6 +1,13 @@
 package br.com.wargen.activity;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import br.com.wargen.R;
+import br.com.wargen.UtilitariosDB;
 import br.com.wargen.UtilitariosUI;
 import br.com.wargen.R.id;
 import br.com.wargen.R.layout;
@@ -17,10 +24,6 @@ import android.view.View;
 import android.widget.EditText;
 
 public class LoginActivity extends Activity {
-
-	public static String SERVER_ADDRESS = "wargen:8080";
-	public static String SERVER_USER = "wargen";
-	public static String SERVER_PASSWORD = "123123";
 	
     @SuppressWarnings("deprecation")
 	@Override
@@ -51,13 +54,7 @@ public class LoginActivity extends Activity {
         }
     }
     
-    public void fazerLogin(View view) {
-    	//Intent intent = new Intent(this, MensagemFazendoLogin.class);
-    	//EditText campoLogin = (EditText) this.findViewById(R.id.txtLogin);
-    	
-    	//this.startActivity(intent);
-    	
-    	
+    public void fazerLogin(View view) throws SQLException {
     	EditText campoLogin = (EditText) this.findViewById(R.id.txtLogin);
     	EditText campoSenha = (EditText) this.findViewById(R.id.txtSenha);
     	
@@ -67,9 +64,9 @@ public class LoginActivity extends Activity {
     	else if (campoSenha.getText().toString().trim() == null || campoSenha.getText().toString().trim().equals("")) {
     		UtilitariosUI.MensagemAlerta(this, "Senha inválida");
     	}
-    	
-    	Intent intent = new Intent(this, PrincipalActivity.class);
-    	this.startActivity(intent);
+    	else {
+    		this.startActivity(new Intent(this, PrincipalActivity.class));
+    	}
     }
     
 }

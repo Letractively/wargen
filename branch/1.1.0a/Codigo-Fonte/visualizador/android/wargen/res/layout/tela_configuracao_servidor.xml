@@ -34,15 +34,6 @@
         android:ems="10"
         android:hint="Usuário" />
 
-    <Button
-        android:id="@+id/btnSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtSenhaServidor"
-        android:layout_alignRight="@+id/txtUsuarioServidor"
-        android:layout_centerVertical="true"
-        android:text="Salvar" />
-
     <EditText
         android:id="@+id/txtSenhaServidor"
         android:layout_width="wrap_content"
@@ -53,5 +44,25 @@
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnTestarConexao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtSenhaServidor"
+        android:layout_alignRight="@+id/txtSenhaServidor"
+        android:layout_centerVertical="true"
+        android:onClick="testarConexao"
+        android:text="Testar Conexao" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnTestarConexao"
+        android:layout_alignRight="@+id/btnTestarConexao"
+        android:layout_below="@+id/btnTestarConexao"
+        android:onClick="salvar"
+        android:text="Salvar" />
 
 </RelativeLayout>
