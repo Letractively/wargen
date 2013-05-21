@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 
 public class Configuracoes {
-	public static String ENDERECO_SERVIDOR = "201.40.26.206:8080";
+	public static String ENDERECO_SERVIDOR = "192.168.0.2:8080";
 	public static String NOME_USUARIO = "Usuário";
 	
 	public static boolean verificarConexaoInternetAtiva(Context context) {

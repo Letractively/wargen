@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://webservice.gerador.wargen.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.gerador.wargen.com.br" xmlns:intf="http://webservice.gerador.wargen.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="http://webservice.gerador.wargen.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.gerador.wargen.com.br" xmlns:intf="http://webservice.gerador.wargen.com.br" xmlns:tns1="http://bean.gerador.wargen.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://webservice.gerador.wargen.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.gerador.wargen.com.br"/>
+   <element name="fazerLogin">
+    <complexType>
+     <sequence>
+      <element name="login" type="xsd:string"/>
+      <element name="senha" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fazerLoginResponse">
+    <complexType>
+     <sequence>
+      <element name="fazerLoginReturn" type="tns1:UsuarioBean"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="testarConexao">
     <complexType/>
    </element>
@@ -15,11 +31,38 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
   </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.gerador.wargen.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="UsuarioBean">
+    <sequence>
+     <element name="id" type="xsd:int"/>
+     <element name="login" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="senha" nillable="true" type="xsd:string"/>
+     <element name="status" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
  </wsdl:types>
 
    <wsdl:message name="testarConexaoResponse">
 
       <wsdl:part element="impl:testarConexaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fazerLoginResponse">
+
+      <wsdl:part element="impl:fazerLoginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fazerLoginRequest">
+
+      <wsdl:part element="impl:fazerLogin" name="parameters">
 
       </wsdl:part>
 
@@ -34,6 +77,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </wsdl:message>
 
    <wsdl:portType name="WsMetodosMobile">
+
+      <wsdl:operation name="fazerLogin">
+
+         <wsdl:input message="impl:fazerLoginRequest" name="fazerLoginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fazerLoginResponse" name="fazerLoginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="testarConexao">
 
@@ -52,6 +107,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:binding name="WsMetodosMobileSoapBinding" type="impl:WsMetodosMobile">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="fazerLogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fazerLoginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fazerLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="testarConexao">
 

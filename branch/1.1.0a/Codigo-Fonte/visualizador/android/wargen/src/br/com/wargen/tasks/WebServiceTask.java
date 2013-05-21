@@ -12,6 +12,7 @@ import br.com.wargen.UtilitariosUI;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 public class WebServiceTask extends AsyncTask <String, Object, Integer>{
@@ -19,7 +20,8 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
   private ProgressDialog progressDialog;
   private AlertDialog alertDialog;
   private Context context;
-  private SoapPrimitive retornoWebservice;
+  private SoapObject retornoWebserviceObjeto;
+  private SoapPrimitive retornoWebservicePrimitivo;
 
   private String URL;
   private String SOAP_ACTION;
@@ -47,13 +49,13 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 	@Override
 	protected Integer doInBackground(String... parametros) {
 		try {
-			if (parametros[0].toLowerCase().equals("testarconexao")) {
+			this.SOAP_ACTION = parametros[0];
+			this.METHOD_NAME = parametros[0];
+			
+			if (this.METHOD_NAME.toLowerCase().equals("testarconexao")) {
 				if (!Configuracoes.verificarConexaoInternetAtiva(this.context)) {
 					throw new Exception("Sem conexão com a internet.");
 				}
-				
-				this.SOAP_ACTION = parametros[0];
-				this.METHOD_NAME = parametros[0];
 				
 				request = new SoapObject(NAMESPACE, METHOD_NAME);
 			 
@@ -63,13 +65,29 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 				androidHttpTransport = new HttpTransportSE(URL);
 				androidHttpTransport.call(SOAP_ACTION, envelope);
 	 
-				retornoWebservice = (SoapPrimitive)envelope.getResponse();
+				retornoWebservicePrimitivo = (SoapPrimitive)envelope.getResponse();
 				
-				if (retornoWebservice == null || !Boolean.parseBoolean(retornoWebservice.toString())) {
+				if (retornoWebservicePrimitivo == null || !Boolean.parseBoolean(retornoWebservicePrimitivo.toString())) {
 					throw new Exception("Não foi possível conectar no banco de dados.");
 				}
 				
 				alertDialog.setMessage("Conexão realizada com sucesso!\n");
+			}
+			else if (this.METHOD_NAME.toLowerCase().equals("fazerlogin")) {				
+				request = new SoapObject(NAMESPACE, METHOD_NAME);
+				request.addAttribute("login", parametros[1].toString());
+				request.addAttribute("senha", parametros[2].toString());
+				
+				envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+				envelope.setOutputSoapObject(request);
+				
+				androidHttpTransport = new HttpTransportSE(URL);
+				androidHttpTransport.call(SOAP_ACTION, envelope);
+	 
+				retornoWebserviceObjeto = (SoapObject)envelope.getResponse();
+				
+				Configuracoes.NOME_USUARIO = retornoWebserviceObjeto.getPropertyAsString("nome").toString();
+				//context.startActivity(new Intent(context, PrincipalActivity.class));
 			}
 		 
 	    } catch (Exception e) {

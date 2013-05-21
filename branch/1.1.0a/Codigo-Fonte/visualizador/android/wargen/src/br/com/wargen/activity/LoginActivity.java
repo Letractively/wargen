@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.com.wargen.Configuracoes;
 import br.com.wargen.R;
 import br.com.wargen.UtilitariosUI;
 import br.com.wargen.R.id;
 import br.com.wargen.R.layout;
 import br.com.wargen.R.menu;
+import br.com.wargen.tasks.WebServiceTask;
 import android.os.Bundle;
 import android.os.Message;
 import android.app.Activity;
@@ -64,7 +66,7 @@ public class LoginActivity extends Activity {
     		UtilitariosUI.MensagemAlerta(this, "Senha inválida");
     	}
     	else {
-    		this.startActivity(new Intent(this, PrincipalActivity.class));
+    		new WebServiceTask(this, Configuracoes.ENDERECO_SERVIDOR).execute("fazerLogin", campoLogin.getText().toString(), campoSenha.getText().toString());
     	}
     }
     
