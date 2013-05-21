@@ -19,8 +19,6 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>FormUploadArquivoServlet</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.arquivo.FormUploadArquivoServlet</servlet-class>
@@ -28,7 +26,7 @@
   <servlet-mapping>
     <servlet-name>FormUploadArquivoServlet</servlet-name>
     <url-pattern>/arquivo/FormUploadArquivo</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   <servlet>
     <servlet-name>ListaArquivo</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.arquivo.ListaArquivoServlet</servlet-class>
@@ -45,7 +43,6 @@
     <servlet-name>ExcluiArquivo</servlet-name>
     <url-pattern>/arquivo/ExcluiArquivo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ExcluiModelo</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.modelo.ExcluiModeloServlet</servlet-class>
@@ -54,7 +51,6 @@
     <servlet-name>ExcluiModelo</servlet-name>
     <url-pattern>/modelo/ExcluiModelo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ExcluiMarcador</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.marcador.ExcluiMarcadorServlet</servlet-class>
@@ -63,8 +59,6 @@
     <servlet-name>ExcluiMarcador</servlet-name>
     <url-pattern>/marcador/ExcluiMarcador</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>ListaAssociacao</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.associacao.ListaAssociacaoServlet</servlet-class>
@@ -80,7 +74,7 @@
   <servlet-mapping>
     <servlet-name>FormAssociacao</servlet-name>
     <url-pattern>/associacao/FormAssociacao</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   <servlet>
     <servlet-name>ExcluiAssociacao</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.associacao.ExcluiAssociacaoServlet</servlet-class>
@@ -89,8 +83,6 @@
     <servlet-name>ExcluiAssociacao</servlet-name>
     <url-pattern>/associacao/ExcluiAssociacao</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>AplicativoServlet</servlet-name>
     <servlet-class>br.com.wargen.gerador.servlet.AplicativoServlet</servlet-class>
@@ -98,5 +90,32 @@
   <servlet-mapping>
     <servlet-name>AplicativoServlet</servlet-name>
     <url-pattern>/Aplicativo</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
+  <servlet>
+    <display-name>Apache-Axis Servlet</display-name>
+    <servlet-name>AxisServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/servlet/AxisServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>*.jws</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AxisServlet</servlet-name>
+    <url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Axis Admin Servlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>org.apache.axis.transport.http.AdminServlet</servlet-class>
+    <load-on-startup>100</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/servlet/AdminServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.gerador.wargen.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.gerador.wargen.com.br" xmlns:intf="http://webservice.gerador.wargen.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.gerador.wargen.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="testarConexao">
+    <complexType/>
+   </element>
+   <element name="testarConexaoResponse">
+    <complexType>
+     <sequence>
+      <element name="testarConexaoReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="testarConexaoResponse">
+
+      <wsdl:part element="impl:testarConexaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testarConexaoRequest">
+
+      <wsdl:part element="impl:testarConexao" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WsMetodosMobile">
+
+      <wsdl:operation name="testarConexao">
+
+         <wsdl:input message="impl:testarConexaoRequest" name="testarConexaoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testarConexaoResponse" name="testarConexaoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WsMetodosMobileSoapBinding" type="impl:WsMetodosMobile">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="testarConexao">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testarConexaoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testarConexaoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WsMetodosMobileService">
+
+      <wsdl:port binding="impl:WsMetodosMobileSoapBinding" name="WsMetodosMobile">
+
+         <wsdlsoap:address location="http://localhost:8080/wargen/services/WsMetodosMobile"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
