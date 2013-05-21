@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.wargen.R;
-import br.com.wargen.UtilitariosDB;
 import br.com.wargen.UtilitariosUI;
 import br.com.wargen.R.id;
 import br.com.wargen.R.layout;

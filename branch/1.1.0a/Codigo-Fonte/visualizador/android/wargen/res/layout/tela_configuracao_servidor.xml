@@ -19,41 +19,10 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="22dp"
         android:ems="10"
-        android:hint="Endereço" >
+        android:hint="Endereço Servidor" >
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/txtUsuarioServidor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtEnderecoServidor"
-        android:layout_below="@+id/txtEnderecoServidor"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Usuário" />
-
-    <EditText
-        android:id="@+id/txtSenhaServidor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtUsuarioServidor"
-        android:layout_below="@+id/txtUsuarioServidor"
-        android:layout_marginTop="21dp"
-        android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/btnTestarConexao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtSenhaServidor"
-        android:layout_alignRight="@+id/txtSenhaServidor"
-        android:layout_centerVertical="true"
-        android:onClick="testarConexao"
-        android:text="Testar Conexao" />
 
     <Button
         android:id="@+id/btnSalvar"
@@ -64,5 +33,16 @@
         android:layout_below="@+id/btnTestarConexao"
         android:onClick="salvar"
         android:text="Salvar" />
+
+    <Button
+        android:id="@+id/btnTestarConexao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtEnderecoServidor"
+        android:layout_alignRight="@+id/txtEnderecoServidor"
+        android:layout_below="@+id/txtEnderecoServidor"
+        android:layout_marginTop="28dp"
+        android:onClick="testarConexao"
+        android:text="Testar Conexao" />
 
 </RelativeLayout>
