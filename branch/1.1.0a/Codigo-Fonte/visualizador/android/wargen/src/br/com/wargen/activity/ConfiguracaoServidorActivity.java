@@ -7,7 +7,7 @@ import br.com.wargen.R;
 import br.com.wargen.UtilitariosUI;
 import br.com.wargen.R.layout;
 import br.com.wargen.R.menu;
-import br.com.wargen.tasks.TestaConexaoTask;
+import br.com.wargen.tasks.WebServiceTask;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,7 +20,9 @@ import android.annotation.TargetApi;
 import android.os.Build;
 
 public class ConfiguracaoServidorActivity extends Activity {
-
+	
+	AsyncTask task = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,14 +30,14 @@ public class ConfiguracaoServidorActivity extends Activity {
 		
 		EditText campoEndereco = (EditText) this.findViewById(R.id.txtEnderecoServidor);
 		
-		campoEndereco.setText(Configuracoes.SERVER_ADDRESS);
+		campoEndereco.setText(Configuracoes.ENDERECO_SERVIDOR);
 	}
 	
 	public void salvar(View view) {
 		try {
 			EditText campoEndereco = (EditText) this.findViewById(R.id.txtEnderecoServidor);
 			
-			Configuracoes.SERVER_ADDRESS = campoEndereco.getText().toString();
+			Configuracoes.ENDERECO_SERVIDOR = campoEndereco.getText().toString();
 			
 			this.finish();
 		} catch (Exception e) {
@@ -47,7 +49,7 @@ public class ConfiguracaoServidorActivity extends Activity {
 		try {
 			EditText campoEndereco = (EditText) this.findViewById(R.id.txtEnderecoServidor);
 			
-			AsyncTask task = new TestaConexaoTask(this, campoEndereco.getText().toString()).execute();
+			task = new WebServiceTask(this, campoEndereco.getText().toString()).execute("testarConexao", "");
 		} catch (Exception e) {
 			UtilitariosUI.MensagemAlerta(this, e.getMessage() + "\n" + e.getStackTrace());
 		}
