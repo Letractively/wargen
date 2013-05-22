@@ -20,6 +20,26 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="listarArquivos">
+    <complexType>
+     <sequence>
+      <element name="login" type="xsd:string"/>
+      <element name="senha" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listarArquivosResponse">
+    <complexType>
+     <sequence>
+      <element name="listarArquivosReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
    <element name="testarConexao">
     <complexType/>
    </element>
@@ -32,6 +52,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </element>
   </schema>
   <schema elementFormDefault="qualified" targetNamespace="http://bean.gerador.wargen.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservice.gerador.wargen.com.br"/>
    <complexType name="UsuarioBean">
     <sequence>
      <element name="id" type="xsd:int"/>
@@ -44,9 +65,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
   </schema>
  </wsdl:types>
 
+   <wsdl:message name="listarArquivosResponse">
+
+      <wsdl:part element="impl:listarArquivosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="testarConexaoResponse">
 
       <wsdl:part element="impl:testarConexaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarArquivosRequest">
+
+      <wsdl:part element="impl:listarArquivos" name="parameters">
 
       </wsdl:part>
 
@@ -90,6 +127,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="listarArquivos">
+
+         <wsdl:input message="impl:listarArquivosRequest" name="listarArquivosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarArquivosResponse" name="listarArquivosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="testarConexao">
 
          <wsdl:input message="impl:testarConexaoRequest" name="testarConexaoRequest">
@@ -119,6 +168,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="fazerLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listarArquivos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarArquivosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarArquivosResponse">
 
             <wsdlsoap:body use="literal"/>
 

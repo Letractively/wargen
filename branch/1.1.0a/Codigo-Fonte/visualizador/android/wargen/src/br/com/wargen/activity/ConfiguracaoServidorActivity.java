@@ -37,7 +37,7 @@ public class ConfiguracaoServidorActivity extends Activity {
 		try {
 			EditText campoEndereco = (EditText) this.findViewById(R.id.txtEnderecoServidor);
 			
-			Configuracoes.ENDERECO_SERVIDOR = campoEndereco.getText().toString();
+			Configuracoes.setEnderecoServidor(campoEndereco.getText().toString());
 			
 			this.finish();
 		} catch (Exception e) {

@@ -24,14 +24,73 @@
         <parameter qname="pns:login" xmlns:pns="http://webservice.gerador.wargen.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:senha" xmlns:pns="http://webservice.gerador.wargen.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
+      <operation name="listarArquivos" qname="operNS:listarArquivos" xmlns:operNS="http://webservice.gerador.wargen.com.br" returnQName="retNS:listarArquivosReturn" xmlns:retNS="http://webservice.gerador.wargen.com.br" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservice.gerador.wargen.com.br" returnItemQName="tns:item" xmlns:tns="http://webservice.gerador.wargen.com.br" soapAction="" >
+        <parameter qname="pns:login" xmlns:pns="http://webservice.gerador.wargen.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:senha" xmlns:pns="http://webservice.gerador.wargen.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
       <operation name="testarConexao" qname="operNS:testarConexao" xmlns:operNS="http://webservice.gerador.wargen.com.br" returnQName="retNS:testarConexaoReturn" xmlns:retNS="http://webservice.gerador.wargen.com.br" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
-      <parameter name="allowedMethods" value="fazerLogin testarConexao"/>
+      <parameter name="allowedMethods" value="fazerLogin listarArquivos testarConexao"/>
 
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>listarArquivos"
+        type="java:br.com.wargen.gerador.webservice.ListarArquivos"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>fazerLoginResponse"
+        type="java:br.com.wargen.gerador.webservice.FazerLoginResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>listarArquivosResponse"
+        type="java:br.com.wargen.gerador.webservice.ListarArquivosResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>testarConexaoResponse"
+        type="java:br.com.wargen.gerador.webservice.TestarConexaoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>testarConexao"
+        type="java:br.com.wargen.gerador.webservice.TestarConexao"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
       <typeMapping
         xmlns:ns="http://bean.gerador.wargen.com.br"
         qname="ns:UsuarioBean"
         type="java:br.com.wargen.gerador.bean.UsuarioBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservice.gerador.wargen.com.br"
+        qname="ns:>fazerLogin"
+        type="java:br.com.wargen.gerador.webservice.FazerLogin"
         serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
         deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
         encodingStyle=""

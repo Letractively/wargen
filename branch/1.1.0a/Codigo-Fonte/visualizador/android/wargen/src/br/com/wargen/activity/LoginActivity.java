@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
         }
     }
     
-    public void fazerLogin(View view) throws SQLException {
+    public void fazerLoginClick(View view) throws SQLException, InterruptedException {
     	EditText campoLogin = (EditText) this.findViewById(R.id.txtLogin);
     	EditText campoSenha = (EditText) this.findViewById(R.id.txtSenha);
     	
@@ -67,6 +67,7 @@ public class LoginActivity extends Activity {
     	}
     	else {
     		new WebServiceTask(this, Configuracoes.ENDERECO_SERVIDOR).execute("fazerLogin", campoLogin.getText().toString(), campoSenha.getText().toString());
+    		UtilitariosUI.MensagemAlerta(this, "Rhá! Iéié!");
     	}
     }
     

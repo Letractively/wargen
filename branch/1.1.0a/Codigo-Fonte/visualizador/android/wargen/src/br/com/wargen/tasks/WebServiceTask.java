@@ -8,6 +8,9 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import br.com.wargen.Configuracoes;
 import br.com.wargen.UtilitariosUI;
+import br.com.wargen.activity.ConfiguracaoServidorActivity;
+import br.com.wargen.activity.PrincipalActivity;
+import br.com.wargen.controller.UsuarioController;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -26,7 +29,6 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
   private String URL;
   private String SOAP_ACTION;
   private String METHOD_NAME;
-  private String NAMESPACE = "http://webservice.gerador.wargen.com.br";
 	
   	SoapObject request = null;
   	HttpTransportSE androidHttpTransport = null;
@@ -57,7 +59,7 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 					throw new Exception("Sem conexão com a internet.");
 				}
 				
-				request = new SoapObject(NAMESPACE, METHOD_NAME);
+				request = new SoapObject(Configuracoes.NAMESPACE_WEBSERVICE, METHOD_NAME);
 			 
 				envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 				envelope.setOutputSoapObject(request);
@@ -74,20 +76,8 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 				alertDialog.setMessage("Conexão realizada com sucesso!\n");
 			}
 			else if (this.METHOD_NAME.toLowerCase().equals("fazerlogin")) {				
-				request = new SoapObject(NAMESPACE, METHOD_NAME);
-				request.addAttribute("login", parametros[1].toString());
-				request.addAttribute("senha", parametros[2].toString());
-				
-				envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-				envelope.setOutputSoapObject(request);
-				
-				androidHttpTransport = new HttpTransportSE(URL);
-				androidHttpTransport.call(SOAP_ACTION, envelope);
-	 
-				retornoWebserviceObjeto = (SoapObject)envelope.getResponse();
-				
-				Configuracoes.NOME_USUARIO = retornoWebserviceObjeto.getPropertyAsString("nome").toString();
-				//context.startActivity(new Intent(context, PrincipalActivity.class));
+				Configuracoes.NOME_USUARIO = new UsuarioController().fazerLogin(parametros[1], parametros[2]);
+		        context.startActivity(new Intent(context, PrincipalActivity.class));
 			}
 		 
 	    } catch (Exception e) {
