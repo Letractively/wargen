@@ -5,14 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 
+import br.com.wargen.ActivityPersonalizada;
 import br.com.wargen.Configuracoes;
 import br.com.wargen.R;
 import br.com.wargen.UtilitariosUI;
-import br.com.wargen.R.id;
-import br.com.wargen.R.layout;
 import br.com.wargen.R.menu;
 import br.com.wargen.tasks.WebServiceTask;
+import br.com.wargen.tasks.usuario.FazLoginTask;
 import android.os.Bundle;
 import android.os.Message;
 import android.app.Activity;
@@ -24,7 +25,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends ActivityPersonalizada {
+	
+	private WebServiceTask task = null;
 	
     @SuppressWarnings("deprecation")
 	@Override
@@ -66,9 +69,17 @@ public class LoginActivity extends Activity {
     		UtilitariosUI.MensagemAlerta(this, "Senha inválida");
     	}
     	else {
-    		new WebServiceTask(this, Configuracoes.ENDERECO_SERVIDOR).execute("fazerLogin", campoLogin.getText().toString(), campoSenha.getText().toString());
-    		UtilitariosUI.MensagemAlerta(this, "Rhá! Iéié!");
+    		new FazLoginTask(this).execute(campoLogin.getText().toString(), campoSenha.getText().toString());
     	}
     }
-    
+
+	@Override
+	public void onTaskExecutou(Object parametro) {
+        this.startActivity(new Intent(this, PrincipalActivity.class));
+	}
+	
+	@Override
+	public void onTaskFalhou(Exception exc) {
+		UtilitariosUI.MensagemAlerta(this, exc.getLocalizedMessage());
+	}
 }

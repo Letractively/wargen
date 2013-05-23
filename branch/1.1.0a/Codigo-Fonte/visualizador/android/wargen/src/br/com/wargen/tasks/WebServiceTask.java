@@ -6,11 +6,11 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import br.com.wargen.ActivityPersonalizada;
 import br.com.wargen.Configuracoes;
 import br.com.wargen.UtilitariosUI;
-import br.com.wargen.activity.ConfiguracaoServidorActivity;
-import br.com.wargen.activity.PrincipalActivity;
 import br.com.wargen.controller.UsuarioController;
+import br.com.wargen.interfaces.IAsyncTaskListener;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -20,32 +20,31 @@ import android.os.AsyncTask;
 
 public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 	
-  private ProgressDialog progressDialog;
-  private AlertDialog alertDialog;
-  private Context context;
-  private SoapObject retornoWebserviceObjeto;
-  private SoapPrimitive retornoWebservicePrimitivo;
+	private ActivityPersonalizada activity;
+	private ProgressDialog progressDialog;
+  	private SoapObject retornoWebserviceObjeto;
+  	private SoapPrimitive retornoWebservicePrimitivo;
 
-  private String URL;
-  private String SOAP_ACTION;
-  private String METHOD_NAME;
+  	private String URL;
+  	private String SOAP_ACTION;
+   	private String METHOD_NAME;
+
+	private SoapObject request = null;
+	private HttpTransportSE androidHttpTransport = null;
+	private SoapSerializationEnvelope envelope = null;
 	
-  	SoapObject request = null;
-  	HttpTransportSE androidHttpTransport = null;
-  	SoapSerializationEnvelope envelope = null;
+	private Exception exception;
   
-	public WebServiceTask(Context context, String endereco){
-		this.context = context;
+	public WebServiceTask(ActivityPersonalizada activity, String endereco){
+		this.activity = activity;
 		this.URL  = "http://" + endereco + "/wargen/services/WsMetodosMobile?wsdl";
 	}
 	 
     @Override
     protected void onPreExecute() {
-        progressDialog = new ProgressDialog(context);
+        progressDialog = new ProgressDialog(this.activity);
         progressDialog.setMessage("Aguarde...");
         progressDialog.show();
-        
-        alertDialog = UtilitariosUI.AlertDialogInstance(context, "");
     }
 
 	@Override
@@ -55,7 +54,7 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 			this.METHOD_NAME = parametros[0];
 			
 			if (this.METHOD_NAME.toLowerCase().equals("testarconexao")) {
-				if (!Configuracoes.verificarConexaoInternetAtiva(this.context)) {
+				if (!Configuracoes.verificarConexaoInternetAtiva(this.activity)) {
 					throw new Exception("Sem conexão com a internet.");
 				}
 				
@@ -72,17 +71,17 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
 				if (retornoWebservicePrimitivo == null || !Boolean.parseBoolean(retornoWebservicePrimitivo.toString())) {
 					throw new Exception("Não foi possível conectar no banco de dados.");
 				}
-				
-				alertDialog.setMessage("Conexão realizada com sucesso!\n");
 			}
 			else if (this.METHOD_NAME.toLowerCase().equals("fazerlogin")) {				
 				Configuracoes.NOME_USUARIO = new UsuarioController().fazerLogin(parametros[1], parametros[2]);
-		        context.startActivity(new Intent(context, PrincipalActivity.class));
+				
+				this.activity.onTaskExecutou(retornoWebserviceObjeto);
 			}
 		 
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        alertDialog.setMessage(e.getMessage());
+	        this.exception = e;
+	        //delegado.notificarTarefaConcluida("fazerLogin", false, alertDialog.setMessage(e.getMessage()));
 	    }
 		return 1;
 	}
@@ -90,7 +89,14 @@ public class WebServiceTask extends AsyncTask <String, Object, Integer>{
     @Override
     protected void onPostExecute(Integer result) {
         progressDialog.dismiss();
-        alertDialog.show();
+        
+        if (this.exception != null) {
+        	this.activity.onTaskFalhou(this.exception);
+        }
+        else {
+        	this.activity.onTaskExecutou(null);
+        }
+        	
     }
     
     @Override
