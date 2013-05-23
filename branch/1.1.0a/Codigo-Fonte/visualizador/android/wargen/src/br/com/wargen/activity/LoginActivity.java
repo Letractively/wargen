@@ -12,7 +12,7 @@ import br.com.wargen.Configuracoes;
 import br.com.wargen.R;
 import br.com.wargen.UtilitariosUI;
 import br.com.wargen.R.menu;
-import br.com.wargen.tasks.WebServiceTask;
+import br.com.wargen.tasks.TestaConexaoWebserviceTask;
 import br.com.wargen.tasks.usuario.FazLoginTask;
 import android.os.Bundle;
 import android.os.Message;
@@ -27,7 +27,7 @@ import android.widget.EditText;
 
 public class LoginActivity extends ActivityPersonalizada {
 	
-	private WebServiceTask task = null;
+	private TestaConexaoWebserviceTask task = null;
 	
     @SuppressWarnings("deprecation")
 	@Override

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 
 public class Configuracoes {
-	public static String ENDERECO_SERVIDOR = "192.168.0.2:8080";
+	public static String ENDERECO_SERVIDOR = "189.31.1.39:8080";
 	public static String NAMESPACE_WEBSERVICE = "http://webservice.gerador.wargen.com.br";
 	public static String URL_WEBSERVICE = "http://" + ENDERECO_SERVIDOR + "/wargen/services/WsMetodosMobile?wsdl";
 	public static String NOME_USUARIO = "<Usuario>";
