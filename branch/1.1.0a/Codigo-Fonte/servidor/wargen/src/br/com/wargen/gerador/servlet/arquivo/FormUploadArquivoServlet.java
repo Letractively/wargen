@@ -78,7 +78,7 @@ public class FormUploadArquivoServlet extends HttpServlet {
 					
 					String caminho = request.getSession().getServletContext().getRealPath("\\ra\\usuarios\\" + usuario.getLogin());
 					
-					if(extensao.equals("dae") || extensao.equals("kmz")) {
+					if(extensao.equals("dae") || extensao.equals("kmz") || extensao.equals("3ds")) {
 						caminho += "\\modelos\\";
 					}
 					else if (extensao.equals("pat")) {

@@ -1,24 +1,15 @@
 package br.com.wargen.activity;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
+
+import edu.dhbw.andar.pub.CustomActivity;
 
 import br.com.wargen.ActivityPersonalizada;
-import br.com.wargen.Configuracoes;
 import br.com.wargen.R;
 import br.com.wargen.UtilitariosUI;
-import br.com.wargen.R.menu;
 import br.com.wargen.tasks.TestaConexaoWebserviceTask;
 import br.com.wargen.tasks.usuario.FazLoginTask;
 import android.os.Bundle;
-import android.os.Message;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -75,7 +66,7 @@ public class LoginActivity extends ActivityPersonalizada {
 
 	@Override
 	public void onTaskExecutou(Object parametro) {
-        this.startActivity(new Intent(this, PrincipalActivity.class));
+        this.startActivity(new Intent(this, CustomActivity.class));
 	}
 	
 	@Override

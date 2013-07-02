@@ -13,7 +13,7 @@ excluirArquivoPorId=delete from tab_arquivo where id = ?
 excluirArquivoPorNomeExtensao=delete from tab_arquivo where nome = ? and extensao = ?
 listarArquivosPorUsuario=select id, usuario, nome, extensao from tab_arquivo where extensao not in('dae', 'kmz', 'pat') and usuario = ? 
 verificarArquivoExiste=select count(*) from tab_arquivo where nome = ? and extensao = ?
-verificarArquivoAssociado=select count(*) from tab_modelo tm, tab_marcador tma where tm.arquivo = ? or tma.arquivo = ? 
+verificarArquivoAssociado=select count(*) from tab_modelo tm, tab_marcador tma where tm.modelo = ? or tma.marcador = ? 
 
 #MARCADOR
 carregarMarcadorPorId=select usuario, marcador, arquivo_imprimir from tab_marcador where id = ?

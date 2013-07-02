@@ -12,7 +12,7 @@
 	function carregar() {
 		var flashvars = {
 			arquivoParametros: document.getElementById('hdnArquivoParametros').value
-		};
+		}; 
 		var params = {
 			menu: "false",
 			scale: "noScale",

@@ -30,7 +30,7 @@ public class FazLoginTask  extends AsyncTask <String, Object, Boolean> {
 				throw new Exception("A conexão com a internet não esta ativa.");
 			}
 			
-			Configuracoes.NOME_USUARIO = new UsuarioController().fazerLogin(parametros[0], parametros[1]);
+			//Configuracoes.NOME_USUARIO = new UsuarioController().fazerLogin(parametros[0], parametros[1]);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        this.exception = e;
